@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="res/style.css">
+
+</head>
+
+<body>
+    <script src="res/helpers.js"></script>
+    <nav>
+        <ul id="mnav">
+            <script>lGet(document.getElementById("mnav"));</script>
+        </ul>
+    </nav>
+    <main>
+        <h2 id="mhead">
+            <script>tGet(document.getElementById("mhead"), "error");</script>
+        </h2>
+        <p id="mbody">
+            <script>tGet(document.getElementById("mbody"), "can't load MOTD, try again later");</script>
+        </p>
+    </main>
+    <aside>
+        <h2 id="ahead">
+            <script>tGet(document.getElementById("ahead"), "error");</script>
+        </h2>
+        <p id="abody">
+            <script>tGet(document.getElementById("abody"), "can't load side content, try again later");</script>
+        </p>
+    </aside>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background-color: #797;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    border-radius: 2em;
+    background-color: #4c4;
+    margin: 3em;
+    padding: 0.5em;
+    width: 16em;
+    float: left;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    border-radius: 1em;
+    background-color: #7c7;
+    margin: 0;
+    width: 10em;
+    padding: 0.25em;
+    text-align: center;
+}
+
+main {
+    border-radius: 2em;
+    background-color: #484;
+    margin: 2em;
+    width: 20em;
+    height: 24em;
+    padding: 2em;
+    float: left;
+}
+
+aside {
+    border-radius: 2em;
+    background-color: #8c8;
+    margin: 2em;
+    width: 20em;
+    height: 24em;
+    padding: 2em;
+    float: left;
+}
