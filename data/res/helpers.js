@@ -1,12 +1,14 @@
 async function tGet(element, errorText) {
-    var XHR = new XMLHttpRequest();
+    const XHR = new XMLHttpRequest();
     XHR.timeout = 1000;
-    XHR.open("GET", `https://api.chlorophyt.us/v0_1/text/${element.id}`);
-    // XHR.addEventListener('load', event => {
-
-    // }).then(json => {
-
-    // });
+    XHR.open("GET", `http://api.chlorophyt.us/v0_1/text/${element.id}`);
+    XHR.addEventListener('load', event => {
+        return event.json();
+    }).then(json => {
+        if(json.text) {
+            element.innerText = json.text;
+        }
+    });
     XHR.addEventListener('error', event => {
         element.innerText = errorText;
     });
@@ -18,23 +20,25 @@ async function tGet(element, errorText) {
 }
 
 async function lGet(element) {
-    var XHR = new XMLHttpRequest();
+    const XHR = new XMLHttpRequest();
     XHR.timeout = 1000;
-    XHR.open("GET", `https://api.chlorophyt.us/v0_1/list/${element.id}/`);
-    // XHR.addEventListener('load', event => {
-
-    // }).then(json => {
-
-    // });
+    XHR.open("GET", `http://api.chlorophyt.us/v0_1/list/${element.id}/`);
+    XHR.addEventListener('load', event => {
+        return event.json();
+    }).then(json => {
+        const item = document.createElement("li");
+        item.innerText = "unimplemented";
+        element.appendChild(item);
+    });
     
     XHR.addEventListener('error', event => {
         const item = document.createElement("li");
-        item.innerText = ". . . ";
+        item.innerText = ". . .";
         element.appendChild(item);
     });
     XHR.addEventListener('timeout', event => {
         const item = document.createElement("li");
-        item.innerText = ". . . ";
+        item.innerText = ". . .";
         element.appendChild(item);
     });
     XHR.setRequestHeader('Content-Type', 'application/json');
