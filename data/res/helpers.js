@@ -26,9 +26,11 @@ async function lGet(element) {
     XHR.addEventListener('load', event => {
         return event.json();
     }).then(json => {
-        const item = document.createElement("li");
-        item.innerText = "unimplemented";
-        element.appendChild(item);
+        json.items.forEach(sub => {
+            const item = document.createElement("li");
+            item.innerText = sub;
+            element.appendChild(item);
+        });
     });
     
     XHR.addEventListener('error', event => {
