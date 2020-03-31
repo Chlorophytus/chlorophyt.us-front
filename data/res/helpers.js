@@ -1,48 +1,48 @@
 async function tGet(element, errorText) {
-    const XHR = new XMLHttpRequest();
-    XHR.timeout = 1000;
-    XHR.open("GET", `http://api.chlorophyt.us/v0_1/text/${element.id}`);
-    XHR.addEventListener('load', event => {
-        return event.json();
-    }).then(json => {
-        if(json.text) {
+    var xhr = new XMLHttpRequest();
+    xhr.timeout = 1000;
+    xhr.responseType = 'json';
+    xhr.open("GET", `https://api.chlorophyt.us/v0_1/text/${element.id}`, true);
+    xhr.addEventListener('load', (event) => {
+        const json = xhr.response;
+        if (json.text) {
             element.innerText = json.text;
         }
     });
-    XHR.addEventListener('error', event => {
+    xhr.addEventListener('error', (event) => {
         element.innerText = errorText;
     });
-    XHR.addEventListener('timeout', event => {
+    xhr.addEventListener('timeout', event => {
         element.innerText = errorText;
     });
-    XHR.setRequestHeader('Content-Type', 'application/json');
-    XHR.send();
+    xhr.send();
 }
 
 async function lGet(element) {
-    const XHR = new XMLHttpRequest();
-    XHR.timeout = 1000;
-    XHR.open("GET", `http://api.chlorophyt.us/v0_1/list/${element.id}/`);
-    XHR.addEventListener('load', event => {
-        return event.json();
-    }).then(json => {
-        json.items.forEach(sub => {
-            const item = document.createElement("li");
-            item.innerText = sub;
-            element.appendChild(item);
-        });
+    var xhr = new XMLHttpRequest();
+    xhr.timeout = 1000;
+    xhr.responseType = 'json';
+    xhr.open("GET", `https://api.chlorophyt.us/v0_1/list/${element.id}/`, true);
+    xhr.addEventListener('load', (event) => {
+        const json = xhr.response;
+        if (json.list) {
+            json.list.forEach(sub => {
+                const item = document.createElement("li");
+                item.innerText = sub;
+                element.appendChild(item);
+            });
+        }
     });
-    
-    XHR.addEventListener('error', event => {
+
+    xhr.addEventListener('error', (event) => {
         const item = document.createElement("li");
         item.innerText = ". . .";
         element.appendChild(item);
     });
-    XHR.addEventListener('timeout', event => {
+    xhr.addEventListener('timeout', (event) => {
         const item = document.createElement("li");
         item.innerText = ". . .";
         element.appendChild(item);
     });
-    XHR.setRequestHeader('Content-Type', 'application/json');
-    XHR.send();
+    xhr.send();
 }
