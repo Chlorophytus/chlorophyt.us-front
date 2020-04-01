@@ -6,7 +6,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-
 body a {
     text-decoration: none;
 }
@@ -49,5 +48,27 @@ body aside {
     width: 64em;
     margin: 2em;
     padding: 2em;
+    height: 24em;
     float: left;
+}
+
+@media only screen and (max-width: 1280px) {
+    body main {
+        width: 100%;
+    }
+    
+    body aside {
+        width: 100%;
+    }
+    body nav {
+        border-radius: 0em 0em 2em 2em;
+        width: 100%;
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    body nav ul li {
+        width: 8em;
+    }
 }
