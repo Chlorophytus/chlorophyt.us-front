@@ -2,14 +2,9 @@ body {
     background-color: #797;
     font-family: Verdana, Geneva, sans-serif;
     margin: auto;
-    width: 80%;
-}
-
-@media only screen and (max-width: 1280px) {
-    body {
-        margin: 0;
-        width: 100%;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 body a {
@@ -19,10 +14,9 @@ body a {
 body nav {
     border-radius: 2em;
     background-color: #4c4;
+    padding: 1em;
+    width: 20em;
     margin: 2em;
-    padding: 0.5em;
-    width: 16em;
-    height: 27em;
     float: left;
 }
 
@@ -35,26 +29,25 @@ body nav ul li {
     background-color: #7c7;
     margin: 0;
     width: 12em;
-    padding: 0.25em;
+    padding: 1em;
     text-align: center;
 }
 
 body main {
     border-radius: 2em;
     background-color: #484;
-    margin: 2em;
-    width: 32em;
-    height: 24em;
+    width: 38em;
     padding: 2em;
-    float: left;
+    margin: 2em;
+    height: 24em;
+    float: right;
 }
 
 body aside {
     border-radius: 2em;
     background-color: #8c8;
+    width: 64em;
     margin: 2em;
-    width: 53em;
-    height: 24em;
     padding: 2em;
     float: left;
 }

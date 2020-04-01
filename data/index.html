@@ -27,11 +27,20 @@
             });
         </script>
     </main>
-    <aside>
-        <h2>
-            Creating a site
-        </h2>
-        <p>I'm working on this, don't worry!</p>
+    <aside id="aside">
+        <script>
+            tGet("side").then((json) => {
+                var side = document.createElement('h2');
+                side.innerText = json.title;
+                var sbody = document.createElement('p');
+                sbody.innerText = json.text.concat("\n\n");
+                var ssmall = document.createElement("small");
+                ssmall.innerText = `Updated ${json.date}\nGenerated in ${json.time}\nAPI v${json.version}`;
+                document.getElementById("aside").appendChild(side);
+                document.getElementById("aside").appendChild(sbody);
+                sbody.appendChild(ssmall);
+            });
+        </script>
     </aside>
 </body>
 
