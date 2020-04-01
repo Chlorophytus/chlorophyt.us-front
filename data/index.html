@@ -12,21 +12,26 @@
             <script>lGet(document.getElementById("mnav"));</script>
         </ul>
     </nav>
-    <main>
-        <h2 id="mhead">
-            <script>tGet(document.getElementById("mhead"), "error");</script>
-        </h2>
-        <p id="mbody">
-            <script>tGet(document.getElementById("mbody"), "can't load MOTD, try again later");</script>
-        </p>
+    <main id="amain">
+        <script>
+            tGet("motd").then((json) => {
+                var motd = document.createElement('h2');
+                motd.innerText = json.title;
+                var mbody = document.createElement('p');
+                mbody.innerText = json.text.concat("\n\n");
+                var msmall = document.createElement("small");
+                msmall.innerText = `Updated ${json.date}\nGenerated in ${json.time}\nAPI v${json.version}`;
+                document.getElementById("amain").appendChild(motd);
+                document.getElementById("amain").appendChild(mbody);
+                mbody.appendChild(msmall);
+            });
+        </script>
     </main>
     <aside>
-        <h2 id="ahead">
-            <script>tGet(document.getElementById("ahead"), "error");</script>
+        <h2>
+            Creating a site
         </h2>
-        <p id="abody">
-            <script>tGet(document.getElementById("abody"), "can't load side content, try again later");</script>
-        </p>
+        <p>I'm working on this, don't worry!</p>
     </aside>
 </body>
 

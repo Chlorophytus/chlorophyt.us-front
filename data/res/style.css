@@ -1,50 +1,59 @@
 body {
-    margin: 0;
     background-color: #797;
     font-family: Verdana, Geneva, sans-serif;
+    margin: auto;
+    width: 80%;
 }
 
-a {
+@media only screen and (max-width: 1024px) {
+    body {
+        margin: 0;
+        width: 100%;
+    }
+}
+
+body a {
     text-decoration: none;
 }
 
-nav {
+body nav {
     border-radius: 2em;
     background-color: #4c4;
-    margin: 3em;
+    margin: 2em;
     padding: 0.5em;
     width: 16em;
+    height: 27em;
     float: left;
 }
 
-nav ul {
+body nav ul {
     list-style-type: none;
 }
 
-nav ul li {
+body nav ul li {
     border-radius: 1em;
     background-color: #7c7;
     margin: 0;
-    width: 10em;
+    width: 12em;
     padding: 0.25em;
     text-align: center;
 }
 
-main {
+body main {
     border-radius: 2em;
     background-color: #484;
     margin: 2em;
-    width: 20em;
+    width: 32em;
     height: 24em;
     padding: 2em;
     float: left;
 }
 
-aside {
+body aside {
     border-radius: 2em;
     background-color: #8c8;
     margin: 2em;
-    width: 20em;
+    width: 53em;
     height: 24em;
     padding: 2em;
     float: left;

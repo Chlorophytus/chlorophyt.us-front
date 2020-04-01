@@ -1,28 +1,28 @@
-async function tGet(element, errorText) {
-    var xhr = new XMLHttpRequest();
-    xhr.timeout = 1000;
-    xhr.responseType = 'json';
-    xhr.open("GET", `https://api.chlorophyt.us/v0_1/text/${element.id}`, true);
-    xhr.addEventListener('load', (event) => {
-        const json = xhr.response;
-        if (json.text) {
-            element.innerText = json.text;
-        }
+async function tGet(stag) {
+    var promise = new Promise((y, n) => { 
+        var xhr = new XMLHttpRequest();
+        xhr.timeout = 1000;
+        xhr.responseType = 'json';
+        xhr.open("GET", `https://api.chlorophyt.us/v0_2/text/${stag}`, true);
+        xhr.addEventListener('load', (event) => {
+            y(xhr.response);
+        });
+        xhr.addEventListener('error', (event) => {
+            n("error");
+        });
+        xhr.addEventListener('timeout', (event) => {
+            n("timeout");
+        });
+        xhr.send();
     });
-    xhr.addEventListener('error', (event) => {
-        element.innerText = errorText;
-    });
-    xhr.addEventListener('timeout', event => {
-        element.innerText = errorText;
-    });
-    xhr.send();
+    return promise;
 }
 
 async function lGet(element) {
     var xhr = new XMLHttpRequest();
     xhr.timeout = 1000;
     xhr.responseType = 'json';
-    xhr.open("GET", `https://api.chlorophyt.us/v0_1/list/${element.id}/`, true);
+    xhr.open("GET", `https://api.chlorophyt.us/v0_2/list/${element.id}/`, true);
     xhr.addEventListener('load', (event) => {
         const json = xhr.response;
         if (json.list) {
