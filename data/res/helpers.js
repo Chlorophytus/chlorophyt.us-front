@@ -1,9 +1,13 @@
-async function tGet(stag) {
+async function tpGet(stag) {
     var promise = new Promise((y, n) => { 
         var xhr = new XMLHttpRequest();
         xhr.timeout = 1000;
         xhr.responseType = 'json';
-        xhr.open("GET", `https://api.chlorophyt.us/v0_2/text/${stag}`, true);
+        if(stag != null) {
+            xhr.open("GET", `https://api.chlorophyt.us/v0_3/pages/${String(stag)}`, true);
+        } else {
+            xhr.open("GET", `https://api.chlorophyt.us/v0_3/pages`, true);
+        }
         xhr.addEventListener('load', (event) => {
             y(xhr.response);
         });
@@ -18,31 +22,23 @@ async function tGet(stag) {
     return promise;
 }
 
-async function lGet(element) {
-    var xhr = new XMLHttpRequest();
-    xhr.timeout = 1000;
-    xhr.responseType = 'json';
-    xhr.open("GET", `https://api.chlorophyt.us/v0_2/list/${element.id}/`, true);
-    xhr.addEventListener('load', (event) => {
-        const json = xhr.response;
-        if (json.list) {
-            json.list.forEach(sub => {
-                const item = document.createElement("li");
-                item.innerText = sub;
-                element.appendChild(item);
-            });
-        }
+async function tmGet() {
+    var promise = new Promise((y, n) => { 
+        var xhr = new XMLHttpRequest();
+        xhr.timeout = 1000;
+        xhr.responseType = 'json';
+        xhr.open("GET", `https://api.chlorophyt.us/v0_3/motd`, true);
+        xhr.addEventListener('load', (event) => {
+            y(xhr.response);
+        });
+        xhr.addEventListener('error', (event) => {
+            n("error");
+        });
+        xhr.addEventListener('timeout', (event) => {
+            n("timeout");
+        });
+        xhr.send();
     });
-
-    xhr.addEventListener('error', (event) => {
-        const item = document.createElement("li");
-        item.innerText = ". . .";
-        element.appendChild(item);
-    });
-    xhr.addEventListener('timeout', (event) => {
-        const item = document.createElement("li");
-        item.innerText = ". . .";
-        element.appendChild(item);
-    });
-    xhr.send();
+    return promise;
 }
+
