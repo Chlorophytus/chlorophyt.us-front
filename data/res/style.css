@@ -14,8 +14,13 @@ body nav {
     justify-content: center;
 }
 
-body nav ul {
-    list-style: none;
+body nav table tr td {
+    background: #8c8;
+    width: 1em;
+    margin: 0;
+    text-align: center;
+    border-radius: 4em;
+    padding: 2em;
 }
 
 body .columnar {
@@ -36,12 +41,4 @@ body .columnar main {
 }
 body .columnar aside {
     background: #4c8;
-}
-body nav ul li {
-    background: #8c8;
-    width: 1em;
-    margin: 0;
-    text-align: center;
-    border-radius: 4em;
-    padding: 2em;
 }

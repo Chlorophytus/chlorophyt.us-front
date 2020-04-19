@@ -8,39 +8,42 @@
 <body>
     <script src="res/helpers.js"></script>
     <nav>
-        <ul id="mnav">
-            <script>
-                tpGet().then((json) => {
-                    var navbar = document.getElementById("mnav");
-                    for (let i = 0; i < json.count; i++) {
-                        var nitem = document.createElement('li');
-                        nitem.innerText = i;
-                        nitem.addEventListener('click', () => {
-                            while(document.getElementsByTagName('aside').length > 0) {
-                                document.getElementsByTagName('aside')[0].remove();
-                            }
-                            tpGet(i).then((jsoncb) => {
-                                jsoncb.data.forEach((json3) => {
-                                    var aside = document.createElement('aside');
-                                    aside.className = "crow";
-                                    var side = document.createElement('h2');
-                                    side.innerText = json3.title;
-                                    var sbody = document.createElement('p');
-                                    sbody.innerText = json3.text.concat("\n\n");
-                                    var ssmall = document.createElement("small");
-                                    ssmall.innerText = `Updated ${json3.date}`;
-                                    aside.appendChild(side);
-                                    aside.appendChild(sbody);
-                                    sbody.appendChild(ssmall);
-                                    document.getElementById("acolumnar").appendChild(aside);
+        <table>
+            <tr id="mnav">
+                <script>
+                    tpGet().then((json) => {
+                        var navbar = document.getElementById("mnav");
+                        const cnt = Math.ceil(json.count / 5);
+                        for (let i = 0; i < cnt; i++) {
+                            var nitem = document.createElement('td');
+                            nitem.innerText = i;
+                            nitem.addEventListener('click', () => {
+                                while (document.getElementsByTagName('aside').length > 0) {
+                                    document.getElementsByTagName('aside')[0].remove();
+                                }
+                                tpGet(i).then((jsoncb) => {
+                                    jsoncb.data.forEach((json3) => {
+                                        var aside = document.createElement('aside');
+                                        aside.className = "crow";
+                                        var side = document.createElement('h2');
+                                        side.innerText = json3.title;
+                                        var sbody = document.createElement('p');
+                                        sbody.innerText = json3.text.concat("\n\n");
+                                        var ssmall = document.createElement("small");
+                                        ssmall.innerText = `Updated ${json3.date}`;
+                                        aside.appendChild(side);
+                                        aside.appendChild(sbody);
+                                        sbody.appendChild(ssmall);
+                                        document.getElementById("acolumnar").appendChild(aside);
+                                    });
                                 });
                             });
-                        });
-                        document.getElementById("mnav").appendChild(nitem);
-                    }
-                });
-            </script>
-        </ul>
+                            document.getElementById("mnav").appendChild(nitem);
+                        }
+                    });
+                </script>
+            </tr>
+        </table>
     </nav>
     <div id="acolumnar" class="columnar">
         <main id="amain" class="crow">
@@ -49,7 +52,7 @@
                     var motd = document.createElement('h2');
                     motd.innerText = json.data.title;
                     var mbody = document.createElement('p');
-                    
+
                     mbody.innerText = json.data.text.concat("\n\n");
                     var msmall = document.createElement("small");
                     msmall.innerText = `Updated ${json.data.date}`;
@@ -61,4 +64,5 @@
         </main>
     </div>
 </body>
+
 </html>
