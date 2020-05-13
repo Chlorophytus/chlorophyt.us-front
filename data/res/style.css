@@ -1,17 +1,21 @@
 body {
     background: #efe;
-    margin: 0 4em 4em;
+    margin: 0;
     font-family: Verdana, Geneva, sans-serif;
 }
 
 body nav {
     border-radius: 0em 0em 2em 2em;
+    right: 8em;
+    left: 28em;
     padding: 1em;
     background: #8a8;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+    position: fixed;
+    overflow: auto;
 }
 
 body nav table tr td {
@@ -23,28 +27,31 @@ body nav table tr td {
     padding: 2em;
 }
 
-@media only screen and (max-width: 600px) {
-    body .columnar .crow {
-        width: 48em;
-    }
-}
 body .columnar {
+    padding: 8em 0em 4em 0em;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-content: center;
 }
 
 body .columnar .crow {
-    margin: 2em 2em 0em 2em;
+    margin: 2em 6em 0em 26em;
     padding: 4em;
     border-radius: 4em;
-    width: 24em;
 }
 
-body .columnar main {
+body main {
     background: #088;
+    padding: 3em;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-width: 14em;
+    position: fixed;
+    overflow: auto;
 }
+
 body .columnar aside {
     background: #4c8;
 }
