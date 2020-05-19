@@ -46,19 +46,33 @@
     </nav>
     <main id="amain">
         <script>
-            tmGet().then((json) => {
+            async function tmGetHandle(json) {
                 var motd = document.createElement('h2');
                 motd.innerText = json.data.title;
                 var mbody = document.createElement('p');
-                
+
                 mbody.innerText = json.data.text.concat("\n\n");
                 var msmall = document.createElement("small");
                 msmall.innerText = `Updated ${json.data.date}`;
                 document.getElementById("amain").appendChild(motd);
                 document.getElementById("amain").appendChild(mbody);
                 mbody.appendChild(msmall);
+            }
+            tmGet().then((json) => {
+                return json;
+            }).catch((e) => {
+                return tmGet();
+            }).then((json) => {
+                tmGetHandle(json);
+            }).catch((e) => {
+                var motd = document.createElement('h2');
+                motd.innerText = "Server Error\n\n";
+                var mbody = document.createElement('p');
+                mbody.innerText = "Try loading the site in a few hours.";
+                document.getElementById("amain").appendChild(motd);
+                document.getElementById("amain").appendChild(mbody);
             });
-            </script>
+        </script>
     </main>
     <div id="acolumnar" class="columnar"></div>
 </body>
